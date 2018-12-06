@@ -9,34 +9,39 @@
 </head>
 <body>
 
-    <h1>Coffee!</h1>
+<h1>Coffee!</h1>
 
-    <form>
-        <label for="roast-selection"></label>
-        <select id="roast-selection">
-            <option>light</option>
-            <option>medium</option>
-            <option>dark</option>
-        </select>
-        <input id="submit" type="submit" />
-    </form>
-    <div id="coffees">
-        <h1></h1>
-        <p></p>
-    </div>
-    <!--
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>ROAST</th>
-            </tr>
-        </thead>
-        <tbody id="coffees"></tbody>
-    </table>
-    -->
-    <script src="main.js"></script>
+<form>
+    <label for="roast-selection"></label>
+    <select id="roast-selection">
+        <option>light</option>
+        <option>medium</option>
+        <option>dark</option>
+        <option>all</option>
+    </select>
+    <input id="submit" type="submit" />
+    <input id="searchBox" type="text" placeholder="Search">
+</form>
+<div id="coffees" class="container">
+
+</div>
+
+<!--
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>ROAST</th>
+        </tr>
+    </thead>
+    <tbody id="coffees"></tbody>
+</table>
+
+-->
+
+<script src="main.js"></script>
 
 </body>
 </html>
