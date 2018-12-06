@@ -50,12 +50,13 @@ var roastSelection = document.querySelector('#roast-selection');
 
 var searchBox = document.querySelector('#searchBox');
 
-function searchCoffees (input) {
+function searchCoffees (userInput) {
     // e.preventDefault(); // don't submit the form, we just want to update the data
-    input = searchBox.value.toUpperCase();
+    userInput = searchBox.value.toUpperCase();
+
     var filteredCoffees = [];
     coffees.forEach(function(coffee) {
-        if (coffees.name.indexOf(input) > -1) {
+        if (coffees.name.indexOf(userInput) > -1) {
             filteredCoffees.push(coffee);
         }
     });
