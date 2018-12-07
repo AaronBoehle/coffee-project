@@ -20,7 +20,6 @@ var coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
-
 // PUTS COFFEE DATA INTO TABLE WITHIN JS //
 function renderCoffee(coffee) {
 
@@ -72,20 +71,32 @@ function searchCoffees() {
         if (coffee.name.toUpperCase().includes(searchRoast)) {
             filteredCoffees.push(coffee);
             console.log(filteredCoffees);
-
         }
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
+var inputName = document.querySelector('#input-name');
+var inputRoast = document.querySelector('#input-roast');
+
+function addCoffees () {
+    var addID = coffees.length+1;
+    var addName = inputName.value.toString();
+    var addRoast = inputRoast.value.toString();
+    var addObject = {id: addID, name: addName, roast: addRoast};
+    coffees.push(addObject);
+    console.log(coffees);
+
+}
+
 var searchBox = document.querySelector('#searchBox');
 searchBox.addEventListener('keyup', searchCoffees);
-
-
 
 var submitButton = document.querySelector('#submit');
 submitButton.addEventListener('click', updateCoffees);
 
+var addCoffeeButton = document.querySelector('#input-submit');
+addCoffeeButton.addEventListener('click', addCoffees);
 
 
 
