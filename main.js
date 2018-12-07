@@ -20,6 +20,7 @@ var coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
+
 // PUTS COFFEE DATA INTO TABLE WITHIN JS //
 function renderCoffee(coffee) {
 
@@ -48,20 +49,7 @@ tbody.innerHTML = renderCoffees(coffees);
 // FORM & SUBMIT SECTION //
 var roastSelection = document.querySelector('#roast-selection');
 
-var searchBox = document.querySelector('#searchBox');
 
-function searchCoffees (userInput) {
-    // e.preventDefault(); // don't submit the form, we just want to update the data
-    userInput = searchBox.value.toUpperCase();
-
-    var filteredCoffees = [];
-    coffees.forEach(function(coffee) {
-        if (coffees.name.indexOf(userInput) > -1) {
-            filteredCoffees.push(coffee);
-        }
-    });
-    tbody.innerHTML = renderCoffees(filteredCoffees);
-}
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     var selectedRoast = roastSelection.value;
@@ -69,14 +57,34 @@ function updateCoffees(e) {
     coffees.forEach(function(coffee) {
         if (coffee.roast === selectedRoast) {
             filteredCoffees.push(coffee);
+        } else if(roastSelection.value === 'all'){
+            filteredCoffees.push(coffee);
         }
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
+function searchCoffees() {
+    var searchRoast = searchBox.value.toUpperCase();
+    var filteredCoffees = [];
+    console.log(searchRoast);
+    coffees.forEach(function(coffee) {
+        if (coffee.name.toUpperCase().includes(searchRoast)) {
+            filteredCoffees.push(coffee);
+            console.log(filteredCoffees);
+
+        }
+    });
+    tbody.innerHTML = renderCoffees(filteredCoffees);
+}
+
+var searchBox = document.querySelector('#searchBox');
+searchBox.addEventListener('keyup', searchCoffees);
+
+
+
 var submitButton = document.querySelector('#submit');
 submitButton.addEventListener('click', updateCoffees);
-searchBox.addEventListener('keypress', searchCoffees);
 
 
 
