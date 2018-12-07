@@ -23,7 +23,7 @@ var coffees = [
 // PUTS COFFEE DATA INTO TABLE WITHIN JS //
 function renderCoffee(coffee) {
 
-    var html = '<div class="coffee">';
+    var html = '<div class="coffee d-block col-4 mx-auto p-auto">';
     // html += '<span>' + coffee.id + '</span>';
     html += '<h1>' + coffee.name + '</h1>';
     html += '<p>' + coffee.roast + '</p>';
