@@ -20,6 +20,22 @@ var coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
+var inputName = document.querySelector('#input-name');
+var inputRoast = document.querySelector('#input-roast');
+var addCoffeeButton = document.querySelector('#input-submit');
+addCoffeeButton.addEventListener('click', addCoffees);
+
+function addCoffees (input) {
+    var addID = coffees.length+1;
+    var addName = inputName.value.toString();
+    var addRoast = inputRoast.value.toString();
+    input = {id: addID, name: addName, roast: addRoast};
+    coffees.push(input);
+    console.log(coffees);
+    tbody.innerHTML = renderCoffees(coffees);
+
+}
+
 // PUTS COFFEE DATA INTO TABLE WITHIN JS //
 function renderCoffee(coffee) {
 
@@ -45,9 +61,8 @@ function renderCoffees(coffees) {
 var tbody = document.querySelector('#coffees');
 tbody.innerHTML = renderCoffees(coffees);
 
-// FORM & SUBMIT SECTION //
+// SUBMIT SECTION //
 var roastSelection = document.querySelector('#roast-selection');
-
 
 function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
@@ -62,7 +77,7 @@ function updateCoffees(e) {
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
-
+// LIVE SEARCH FUNCTION //
 function searchCoffees() {
     var searchRoast = searchBox.value.toUpperCase();
     var filteredCoffees = [];
@@ -76,18 +91,9 @@ function searchCoffees() {
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
 
-var inputName = document.querySelector('#input-name');
-var inputRoast = document.querySelector('#input-roast');
 
-function addCoffees () {
-    var addID = coffees.length+1;
-    var addName = inputName.value.toString();
-    var addRoast = inputRoast.value.toString();
-    var addObject = {id: addID, name: addName, roast: addRoast};
-    coffees.push(addObject);
-    console.log(coffees);
 
-}
+
 
 var searchBox = document.querySelector('#searchBox');
 searchBox.addEventListener('keyup', searchCoffees);
@@ -95,8 +101,7 @@ searchBox.addEventListener('keyup', searchCoffees);
 var submitButton = document.querySelector('#submit');
 submitButton.addEventListener('click', updateCoffees);
 
-var addCoffeeButton = document.querySelector('#input-submit');
-addCoffeeButton.addEventListener('click', addCoffees);
+
 
 
 
